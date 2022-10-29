@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RelativeLayout layout = findViewById(R.id.mainLayout);
+        AnimationDrawable drawable = (AnimationDrawable) layout.getBackground();
+        drawable.setEnterFadeDuration(2500);
+        drawable.setExitFadeDuration(5000);
+        drawable.start();
+       // layout.setBackground(getResources().getDrawable(R.drawable.gradientlist));
 
         initVar();
         showNotes();
