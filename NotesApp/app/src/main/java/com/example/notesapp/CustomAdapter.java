@@ -59,10 +59,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     }
 
     private void updateItem(int i) {
-        mHelper.mNoteDao().deleteNote(new Note(mList.get(i).getId(),
-                mList.get(i).getTitle(),mList.get(i).getContent()));
-        
-        ((MainActivity)mContext).showNotes();
+
 
         Dialog dialog = new Dialog(mContext);
         dialog.setContentView(R.layout.add_note_layout);
@@ -75,6 +72,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
         Edt_Content = dialog.findViewById(R.id.edt_content);
         Edt_Content.setText(mList.get(i).getContent());
         Btn_add =   dialog.findViewById(R.id.btn_add);
+        Btn_add.setText("Update");
 
 
         Btn_add.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +82,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
                 String content = Edt_Content.getText().toString();
 
                 if (!content.equals("")) {
+                    mHelper.mNoteDao().deleteNote(new Note(mList.get(i).getId(),
+                            mList.get(i).getTitle(),mList.get(i).getContent()));
+                    //((MainActivity)mContext).showNotes();
                     mHelper.mNoteDao().addNote(new Note(title,content));
                     ((MainActivity)mContext).showNotes();
                     dialog.dismiss();
