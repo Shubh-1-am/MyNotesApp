@@ -42,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 Button Btn_add;
 
                 Edt_title = dialog.findViewById(R.id.edt_title);
+                Edt_title.setTextColor(getResources().getColor(R.color.DarkBlack));
+
                 Edt_Content = dialog.findViewById(R.id.edt_content);
+                Edt_Content.setTextColor(getResources().getColor(R.color.black));
                 Btn_add =   dialog.findViewById(R.id.btn_add);
 
                 Btn_add.setOnClickListener(new View.OnClickListener() {
